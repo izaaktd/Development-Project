@@ -1,0 +1,46 @@
+from tkinter.tix import InputOnly
+
+
+Name = input("Enter First and Last Name")
+
+ID = input("Please enter ID")
+
+Email = input("Please enter Email")
+
+PhoneNumber = input("Please enter Phone Number (Spaces Between Numbers Not Allowed")
+
+Month = input("Enter Month")
+
+print("Monthly Report\n")
+print("Name:", Name)
+print("ID:", ID)
+print("Email:", Email)
+print("Phone Number:", PhoneNumber)
+print("Month:", Month)
+
+DomesticHours = int(input("Enter Domestic Hours and Minutes Flown"))
+
+InterntationalHours = int(input("Enter International Hours and Minutes Flown"))
+
+TotalHours = (DomesticHours + InterntationalHours)
+
+if DomesticHours > 40:
+    input('Domestic Hours Cannot Exceed 40 Hours in a Week')
+else:
+    print(("\nDomestic Hours:", DomesticHours))
+
+if InterntationalHours > 40:
+    input('International Hours Cannot Exceed 40 Hours in a Week')
+else:
+    print(("International Hours:", InterntationalHours))
+
+
+DomesticPay = (DomesticHours * 35)
+
+InternationalPay = (InterntationalHours * 50)
+
+TotalPay = (DomesticPay + InternationalPay)
+
+print("\nDomestic Pay:", DomesticPay)
+print("International Pay:", InternationalPay)
+print("Total Pay:", TotalPay)
