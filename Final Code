@@ -47,12 +47,10 @@ class App():
         main_frame.pack()
 
         tkr.Label(main_frame, text="Team", bg='blue', fg='white', font='times 20 bold').grid(row=0, column=0, sticky=W)
-        tkr.Label(main_frame, text="Name", bg='blue', fg='white', font='times 20 bold').grid(row=1, column=0, pady=10,
-                                                                                             sticky=W)
-        tkr.Label(main_frame, text="ID", bg='blue', fg='white', font='times 20 bold').grid(row=2, column=0, pady=10,
-                                                                                           sticky=W)
-        tkr.Label(main_frame, text="Month", bg='blue', fg='white', font='times 20 bold').grid(row=3, column=0, pady=10,
-                                                                                           sticky=W)
+        tkr.Label(main_frame, text="Name", bg='blue', fg='white', font='times 20 bold').grid(row=1, column=0, pady=10,sticky=W)                                                                                    
+        tkr.Label(main_frame, text="ID", bg='blue', fg='white', font='times 20 bold').grid(row=2, column=0, pady=10,sticky=W)                                                                                       
+        tkr.Label(main_frame, text="Month", bg='blue', fg='white', font='times 20 bold').grid(row=3, column=0, pady=10,sticky=W)
+                                                                                           
 
         # team number drop list
         options = [
@@ -116,19 +114,38 @@ class App():
             messagebox.showinfo('info', msg)
 
         # validation()
+        def screen2():
+            root = tkr.Tk()
+            root.geometry('900x600')
+            root.configure(bg='blue')
+            root.title('Wage Calculator')
+            photoLabel_frame = tkr.Frame(root)
+            photoLabel_frame.pack()
+            photo = PhotoImage(file='/Users/viviancenguyen/Downloads/help_linhtrang/labelxx.png')
+            tkr.Label(photoLabel_frame, image=photo).grid(row=1, column=1)
+
+            frame = tkr.Frame(root, bg='blue')
+            frame.pack()
+
+            tkr.Label(frame, text="Domestic Hour", bg='blue', fg='white', font='times 20 bold').grid(row=0, column=0, sticky=W)
+            tkr.Label(frame, text="Internation Hour", bg='blue', fg='white', font='times 20 bold').grid(row=1, column=0, pady=10,sticky=W)                                                                                    
+            tkr.Label(frame, text="Total Hours", bg='blue', fg='white', font='times 20 bold').grid(row=2, column=0, pady=10,sticky=W)                                                                                       
+            tkr.Label(frame, text="Domestic Pay", bg='blue', fg='white', font='times 20 bold').grid(row=3, column=0, pady=10,sticky=W)
+            tkr.Label(frame, text="Internationa Pay", bg='blue', fg='white', font='times 20 bold').grid(row=4, column=0, pady=10,sticky=W)
+            tkr.Label(frame, text="Total Pay", bg='blue', fg='white', font='times 20 bold').grid(row=5, column=0, pady=10,sticky=W)
+
+
 
         # button widget
         tkr.Button(main_frame, text="Go Back", fg='black', bg='blue', highlightbackground='orange',
                    font='times 18 bold').grid(row=4, column=1, pady=28, sticky=W)
-        tkr.Button(main_frame, text="Clock In", command=validation, fg='black', bg='blue',
+        tkr.Button(main_frame, text="Clock In", command=lambda: [validation(), screen2()], fg='black', bg='blue',
                    highlightbackground='orange', font='times 18 bold').grid(row=4, column=1, pady=28, sticky=E)
         tkr.Button(main_frame, text="Need help?", bg='blue', fg='black', highlightbackground='blue',
                    font='times 15 bold').grid(row=5, column=2, pady=40, padx=15, sticky=E)
 
         # This helps to remain the app opened until the user close it
         root.mainloop()
-
-        # TODO: you should still implement what happens after users click the buttons, right?
 
 
 if __name__ == '__main__':
