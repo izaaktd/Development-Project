@@ -73,7 +73,7 @@ class App():
             "Viviance Nguyen",
             "Izaak Ditrich",
             "Patrick Bauer",
-            "Sam Brown",
+            
         ]
         clicked = StringVar()
         clicked.set("Chose your name")
