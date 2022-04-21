@@ -1,21 +1,23 @@
-from tkinter import * 
+import tkinter
+from tkinter import *
 import tkinter as tkr
 from time import strftime
-import datetime 
+import datetime
 import timeit
 from tkinter import messagebox
 from turtle import width
 
+
 class App():
     def __init__(self):
         self.create_app()
-    
+
     # create_app -> goback
     # create_login
 
     # if goback : -> call create_login
 
-    def create_app(self): 
+    def create_app(self):
         root = tkr.Tk()
         root.geometry('900x600')
         root.configure(bg='blue')
@@ -24,32 +26,33 @@ class App():
         photoLabel_frame = tkr.Frame(root)
         photoLabel_frame.pack()
 
-		# Pass the path to the photo in your local computer here.
+        # Pass the path to the photo in your local computer here.
         photo = PhotoImage(file='/Users/viviancenguyen/Downloads/help_linhtrang/labelxx.png')
-        tkr.Label(photoLabel_frame, image=photo).grid(row = 1, column = 1)
-
+        tkr.Label(photoLabel_frame, image=photo).grid(row=1, column=1)
 
         def time():
-            x= datetime.datetime.now().strftime(("%d/%m/%Y \n%H:%M:%S %p"))
-            clock.config(text = x, bg='blue', fg='white', font='times 20 bold')
+            x = datetime.datetime.now().strftime(("%d/%m/%Y \n%H:%M:%S %p"))
+            clock.config(text=x, bg='blue', fg='white', font='times 20 bold')
             clock.after(1000, time)
+
         time_frame = tkr.Frame(root, bg='blue')
         time_frame.pack()
 
-        clock = tkr.Label(time_frame, pady=30,padx=30)
+        clock = tkr.Label(time_frame, pady=30, padx=30)
         time()
         clock.grid(row=0, column=0)
 
-
-        #create a label widget
+        # create a label widget
         main_frame = tkr.Frame(root, bg='blue')
         main_frame.pack()
 
-        tkr.Label(main_frame, text = "Team", bg='blue', fg='white', font='times 20 bold').grid(row = 0, column = 0, sticky = W)
-        tkr.Label(main_frame, text = "Name", bg='blue', fg='white', font='times 20 bold').grid(row = 1, column = 0, pady = 10, sticky = W)
-        tkr.Label(main_frame, text = "ID", bg='blue', fg='white', font='times 20 bold').grid(row = 2, column = 0, pady=10, sticky = W)
+        tkr.Label(main_frame, text="Team", bg='blue', fg='white', font='times 20 bold').grid(row=0, column=0, sticky=W)
+        tkr.Label(main_frame, text="Name", bg='blue', fg='white', font='times 20 bold').grid(row=1, column=0, pady=10,
+                                                                                             sticky=W)
+        tkr.Label(main_frame, text="ID", bg='blue', fg='white', font='times 20 bold').grid(row=2, column=0, pady=10,
+                                                                                           sticky=W)
 
-        #team number drop list
+        # team number drop list
         options = [
             "1",
             "2",
@@ -57,61 +60,64 @@ class App():
             "4",
             "5",
             "6",
-            "7" ]
+            "7"]
         clicked = IntVar()
-        clicked.set( "Select your team number" )
-        optionMenu = tkr.OptionMenu( main_frame, clicked, *options )
+        clicked.set("Select your team number")
+        optionMenu = tkr.OptionMenu(main_frame, clicked, *options)
         optionMenu.config(width="30")
         optionMenu.grid(row=0, column=1)
 
-       
-        #name droplist
-        pilot= [
+        # name droplist
+        pilot = [
             "John Rosenberry",
             "Viviance Nguyen",
             "Izaak Ditrich",
             "Patrick Bauer",
             "Sam Brown",
-            ]
+        ]
         clicked = StringVar()
-        clicked.set( "Chose your name" )
-        pilot = tkr.OptionMenu( main_frame, clicked, *pilot )
+        clicked.set("Chose your name")
+        pilot = tkr.OptionMenu(main_frame, clicked, *pilot)
         pilot.config(width="30")
         pilot.grid(row=1, column=1)
 
         # entry widgets, used to take entry from user
-        
-        self.id = StringVar()
+        # tkr.Entry(main_frame, id_numb)
+
+        id = tkr.StringVar()
+        id_numb = Entry(main_frame, width=34, bg="white", textvariable=id)
+        id_numb.grid(row=2, column=1)
+
         def validation():
-            msg = ''
             id = id_numb.get()
-            if len(id)==0:
-                msg='Field can\'t be empty'
+            if len(id) == 0:
+                msg = 'Field can\'t be empty'
             else:
                 try:
                     if len(id) == 4:
-                        msg='clock-in operation successfully'
+                        msg = 'clock-in operation successfully'
                     else:
-                        msg='Try again with 4 digit'
+                        msg = 'Try again with 4 digit'
                 except:
-                    msg='Enter number only'
+                    msg = 'Enter number only'
 
             messagebox.showinfo('info', msg)
-         
-        id_numb= Entry(main_frame, width = 34, bg='white').grid(row = 2, column = 1)
-        validation()
-        
 
+        # validation()
 
         # button widget
-        tkr.Button(main_frame, text = "Go Back" ,fg='black', bg='blue', highlightbackground='orange', font='times 18 bold').grid(row = 4, column = 1, pady=28, sticky = W)
-        tkr.Button(main_frame, text = "Clock In", fg='black', bg='blue', highlightbackground='orange', font='times 18 bold').grid(row = 4, column = 1, pady=28, sticky = E)
-        tkr.Button(main_frame, text = "Need help?", bg='blue', fg='black',highlightbackground='blue', font='times 15 bold').grid(row = 5, column = 2, pady=40, padx = 15, sticky = E)
-        
-        # This helps to remain the app opened until the user close it 
+        tkr.Button(main_frame, text="Go Back", fg='black', bg='blue', highlightbackground='orange',
+                   font='times 18 bold').grid(row=4, column=1, pady=28, sticky=W)
+        tkr.Button(main_frame, text="Clock In", command=validation, fg='black', bg='blue',
+                   highlightbackground='orange', font='times 18 bold').grid(row=4, column=1, pady=28, sticky=E)
+        tkr.Button(main_frame, text="Need help?", bg='blue', fg='black', highlightbackground='blue',
+                   font='times 15 bold').grid(row=5, column=2, pady=40, padx=15, sticky=E)
+
+        # This helps to remain the app opened until the user close it
         root.mainloop()
 
-		#TODO: you should still implement what happens after users click the buttons, right?
+        # TODO: you should still implement what happens after users click the buttons, right?
+
 
 if __name__ == '__main__':
     App()
