@@ -51,6 +51,8 @@ class App():
                                                                                              sticky=W)
         tkr.Label(main_frame, text="ID", bg='blue', fg='white', font='times 20 bold').grid(row=2, column=0, pady=10,
                                                                                            sticky=W)
+        tkr.Label(main_frame, text="Month", bg='blue', fg='white', font='times 20 bold').grid(row=3, column=0, pady=10,
+                                                                                           sticky=W)
 
         # team number drop list
         options = [
@@ -82,6 +84,16 @@ class App():
         pilot.grid(row=1, column=1)
 
         # entry widgets, used to take entry from user
+        month = tkr.StringVar
+        month= Entry(main_frame, width=34, bg="white", textvariable=month).grid (row=3, column=1)
+        monthSel = ['1','2','3','4','5','6','7','8','9','10','11','12']
+        clicked = StringVar()
+        clicked.set("Select your month")
+        monthSel = tkr.OptionMenu(main_frame, clicked, *monthSel)
+        monthSel.config(width="30")
+        monthSel.grid(row=3, column=1)
+
+
         # tkr.Entry(main_frame, id_numb)
 
         id = tkr.StringVar()
