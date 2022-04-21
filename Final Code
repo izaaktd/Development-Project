@@ -73,6 +73,7 @@ class App():
             "Viviance Nguyen",
             "Izaak Ditrich",
             "Patrick Bauer",
+            'Sam Brown'
             
         ]
         clicked = StringVar()
@@ -114,6 +115,7 @@ class App():
             messagebox.showinfo('info', msg)
 
         # validation()
+        
         def screen2():
             root = tkr.Tk()
             root.geometry('900x600')
@@ -137,6 +139,14 @@ class App():
             tkr.Label(frame, text="International Pay", bg='blue', fg='white', font='times 20 bold').grid(row=4, column=0, pady=10,sticky=W)
             tkr.Label(frame, text="Total Pay", bg='blue', fg='white', font='times 20 bold').grid(row=5, column=0, pady=10,sticky=W)
 
+            
+            tkr.Entry(frame, width=34, bg="white", textvariable=month).grid (row=0, column=1)
+            tkr.Entry(frame, width=34, bg="white", textvariable=month).grid (row=1, column=1)
+            tkr.Entry(frame, width=34, bg="white", textvariable=month).grid (row=2, column=1)
+            tkr.Entry(frame, width=34, bg="white", textvariable=month).grid (row=3, column=1)
+            tkr.Entry(frame, width=34, bg="white", textvariable=month).grid (row=4, column=1)
+            tkr.Entry(frame, width=34, bg="white", textvariable=month).grid (row=5, column=1) 
+            
             #TODO: build Code here
 
 
